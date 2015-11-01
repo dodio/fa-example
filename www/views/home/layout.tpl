@@ -1,5 +1,5 @@
 <!doctype html>
-{% html framework='http://static.danlu.com/vendor/run.js' %}
+{% html framework='//static.danlu.com/vendor/run.js' %}
 
 {% head %}
 	<meta charset="UTF-8">

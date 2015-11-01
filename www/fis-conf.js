@@ -23,19 +23,27 @@ fis.match("conf/mapJson.js",{
       to : "./conf/"
   	}),
   	release : "mapJson.build.js",
-  	useHash :false
+  	useHash : false
 })
 
-// 编译less
-fis.match("/views/!(lib)/**.less",{
-	parser: fis.plugin('less',{
-		paths:[ [__dirname,"views"].join(",") ]
-	}),
-	rExt:"css"
-})
+
+
 // 默认发布到static（供本地访问）
 fis.match("/views/(**)",{
-	release : "/static/$1"
+  release : "/static/$1"
+})
+// 编译less
+fis.match("/views/**.less",{
+  parser: fis.plugin('less',{
+    paths:[ [__dirname,"views"].join(",") ]
+  }),
+  rExt:"css"
+});
+
+// inc/lib 内的 less 不编译, 不发布
+fis.match("/views/styles/{inc,lib}/**.{less,css}",{
+  parser : null,
+  release : false
 })
 
 // 将编译信息写入前端config.js
@@ -84,7 +92,7 @@ prod.match("::package",{
 	postpackager: fis.plugin('loader')
 });
 
-prod.match("!(styles)/**.less",{
+prod.match("!(styles)/!(lib/**).less",{
 	packTo:projectInfo.staticDir + "/pkg/aio.css"
 });
 

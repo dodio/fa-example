@@ -14,7 +14,7 @@ var options = {
   	
   	// 在服务器中虚拟主机信息
   	vhost : {
-		domain:"www2.example.com"
+		domain:"www.example.com"
 	}
 };
 

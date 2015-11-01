@@ -1,0 +1,5 @@
+fa-core/
+node_modules/
+mapJson.build.js
+log/
+output/
