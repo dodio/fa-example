@@ -35,7 +35,7 @@ fis.match("/views/(**)",{
 // 编译less
 fis.match("/views/**.less",{
   parser: fis.plugin('less',{
-    paths:[ [__dirname,"views"].join(",") ]
+    paths:[ [__dirname,"views"].join("/") ]
   }),
   rExt:"css"
 });
