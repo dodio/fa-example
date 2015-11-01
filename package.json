@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "a web framework",
+  "main": "start.js",
+  "scripts": {
+    "dev": "SET FA_ENV=dev&SET NODE_DEBUG=fa/dispatcher,fa/require,fa/middleware,fa/createServer,fa/log&node start",
+    "test": "SET FA_ENV=test&SET NODE_DEBUG=fa/dispatcher,fa/require,fa/middleware,fa/createServer,fa/log&SET FA_DEBUG=true&node start",
+    "start" : "SET FA_ENV=prod&node start"
+  },
+  "author": "dodio",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
