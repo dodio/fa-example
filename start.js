@@ -10,13 +10,14 @@ if(process.env.FA_ENV == "dev"){
 }else{
 	cpus.forEach(function(c,i) {
 	  console.log("第"+i+"个子进程");
-	})
 	childs.push(child_process.fork("./server"))
+	})
 }
 
 var server = require("net").createServer();
-
-server.listen(80,function(){
+var port = process.env.FA_PORT || 82;
+server.listen(port,function(){
+  console.log("server listens on port :%s", port );
   childs.forEach(function(p){
     p.send("server",server);
   })

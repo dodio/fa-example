@@ -1,8 +1,12 @@
 {% extends "home/layout.tpl" %}
-
+{% block "seo" %}
+	<title>Fa框架demo</title>
+{% endblock %}
 {% block "content" %}
 {% require "home/index.less" %}
-{% require "home/index.js" %}
+{% script %}
+seajs.use("home/index");
+{% endscript %}
 
 <header>
 	<div class="wapper">
@@ -62,7 +66,7 @@
 	</div>
 </header>
 <div class="container">
-	
+	{{user.uid}} : {{user.username}} : {{username}}
 </div>
 
 {% endblock %}

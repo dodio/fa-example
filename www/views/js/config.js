@@ -1,33 +1,18 @@
 (function() {
-
+	"use strict";
 	var rs_map = __RESOURCE_MAP__;
-	window.STATIC_ROOT = "__STATIC_ROOT__";
-	window.STATIC_DIR = "__STATIC_DIR__";
-	if(!rs_map){
-		window.STATIC_BASE = "/js";
+	var staticDomain = "__STATIC_DOMAIN__";
+	staticDomain = (staticDomain == "") ? "/" : staticDomain;
+	R.config("STATIC_DOMAIN", staticDomain);
+	var staticDir = "__STATIC_DIR__";
+	R.config("STATIC_DIR", staticDir);
+	var staticBase ;
+	if(rs_map === "NO_MAP"){
+		staticBase = "/"
+		rs_map = {};
 	}else{
-		window.STATIC_BASE = STATIC_ROOT + STATIC_DIR + "js";
+		staticBase =  (staticDomain == "/" ? "" : staticDomain) + staticDir;
 	}
-	var seamap = [];
-	for(var i in rs_map.res){
-		if(!/\.(js|css)$/.test(i)){
-			continue;
-		}
-		var rs = rs_map.res[i];
-		var realname = i.replace(/^views\/js\//,"");
-		if(rs.pkg){
-			var mapname = rs_map.pkg[rs.pkg].uri.replace(new RegExp("^" + STATIC_DIR + "js/"),"");
-		}else{
-			var mapname = rs.uri.replace(new RegExp("^" + STATIC_DIR + "js/"),"");
-		}
-		seamap.push([realname,mapname]);
-	}
-
-	R.init({
-		base: STATIC_BASE,
-		alias:{
-			"jquery":"lib/jquery/jquery-1.10.1"
-		},
-		map : seamap
-	});
+	R.config("STATIC_BASE", staticBase);
+	R.faFisMap(rs_map);
 })()

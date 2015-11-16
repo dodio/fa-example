@@ -1,5 +1,5 @@
-fa-core/
-node_modules/
-mapJson.build.js
-log/
-output/
+node_modules
+output
+log
+/www/conf/mapJson.build.js
+/fa-core

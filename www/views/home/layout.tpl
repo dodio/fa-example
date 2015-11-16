@@ -1,5 +1,5 @@
 <!doctype html>
-{% html framework='//static.danlu.com/vendor/run.js' %}
+{% html framework='http://asset.example.com/vendor/run.js'%}
 
 {% head %}
 	<meta charset="UTF-8">
@@ -16,16 +16,17 @@
 	{% endblock %}
 	<script>
 		// hack for config.js
-		__RESOURCE_MAP__ = "";
+		var HEAD_TIME = new Date().getTime();
+		var __RESOURCE_MAP__ = "NO_MAP";
 	</script>
   {% require "/styles/global.less" %}
-  {% require "/js/zui/css/zui.min.css" %}
+  {% require "/js/zui/css/zui.css" %}
 {% require "/js/config.js" %}
 {% endhead %}
 
 {% body %}
-  
-  {% block "content" %}{% endblock %}
+   {% include "home/common/header.tpl" %}
+   {% block "content" %}{% endblock %}
 
 {% endbody %}
 
