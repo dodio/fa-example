@@ -3,3 +3,4 @@ output
 log
 /www/conf/mapJson.build.js
 /fa-core
+session

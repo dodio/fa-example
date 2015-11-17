@@ -3,10 +3,18 @@ module.exports = function(router) {
 		res.cookie("haha","lala",{
 			signed:true
 		});
-		res.data("user",{
-			uid:23,
-			username :"张三"
-		})
+
+		var user = req.session.user;
+
+		if(!user){
+			user = req.session.user = {
+				uid:23,
+				username :"张三"
+			};
+			console.log("设置user");
+		}
+
+		res.data("user",user)
 		res.data('username',"李四");
 
 		res.render("home/index", res.data.get() );
