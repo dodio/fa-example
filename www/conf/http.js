@@ -4,6 +4,6 @@ module.exports = conf;
 
 conf.session = {}
 conf.session.redis = {
-	host:"192.168.5.24",
+	host:"localhost",
 	port:"6381"
 };
